@@ -21,10 +21,22 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by wesel on 2018/1/3.
+ * Created by Wesely on 2018/1/3.
  */
 
 public class ClickEffect {
+
+    public static class AxisPoint {
+        public int x;
+        public int y;
+        public static AxisPoint getCenter(View v){
+            AxisPoint point = new AxisPoint();
+            point.x = (int) v.getX()+v.getWidth()/2;
+            point.y = (int) v.getY()+v.getHeight()/2;
+            return point;
+        }
+
+    }
 
     private static int getRandomColor() {
         Random rnd = new Random();

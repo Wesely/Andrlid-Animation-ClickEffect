@@ -4,9 +4,10 @@
  - Note: these animation are using native android ImageView.
 
 ## Usage
-Just copy ClickEffect.java into your project, then simply use it like this:
+Just copy ClickEffect.java into your project, 
+then simply use it like this in whereever you want:
 
-```
+```java
 ClickEffect.animRipple(context, view);
 ClickEffect.animRing(context, view, 600);
 ClickEffect.animNova(context, view);

@@ -1,8 +1,9 @@
 # Andrlid-Animation-ClickEffect
 9 animation made by pure java code without .xml files. 
 Every functions are static that can be called easily.
+Note: these animation are using native android ImageView.
 
-## Usage : 
+## Usage
 Just copy ClickEffect.java into your project, then simply use it like this:
 
 ```

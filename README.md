@@ -3,6 +3,8 @@
  Every functions are static that can be called easily.
  - Note: these animation are using native android ImageView.
 
+![](https://i.imgur.com/kkQxGB2.gif)
+
 ## Usage
 Just copy ClickEffect.java into your project, 
 then simply use it like this in whereever you want:

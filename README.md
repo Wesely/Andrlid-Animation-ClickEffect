@@ -2,6 +2,9 @@
 9 animation made by pure java code without .xml files. 
 Every functions are static that can be called easily.
 
+## Usage : 
+Just copy ClickEffect.java into your project, then simply use it like this:
+
 ```
 ClickEffect.animRipple(context, view);
 ClickEffect.animRing(context, view, 600);

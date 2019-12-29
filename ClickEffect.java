@@ -1,4 +1,4 @@
-package wesely.tw.sandbox.click_effect;
+
 
 import android.content.Context;
 import android.graphics.Color;
@@ -16,20 +16,21 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import java.util.ArrayList;
 import java.util.Random;
+import timber.log.Timber;
 
 /**
  * Created by Wesely on 2018/1/3.
+ * Modificade by John on 11/5/2019,
  */
 
 public class ClickEffect {
 
     public static class AxisPoint {
-        public int x;
-        public int y;
-        public static AxisPoint getCenter(View v){
+        int x;
+        int y;
+        static AxisPoint getCenter(View v){
             AxisPoint point = new AxisPoint();
             point.x = (int) v.getX()+v.getWidth()/2;
             point.y = (int) v.getY()+v.getHeight()/2;
@@ -44,12 +45,11 @@ public class ClickEffect {
         return Color.argb(transparent, 56 + rnd.nextInt(170), 56 + rnd.nextInt(170), 56 + rnd.nextInt(170));
     }
 
-    private static int setRandomColor(Drawable d) {
+    private static void setRandomColor(Drawable d) {
         Random rnd = new Random();
         int transparent = 200;
         int color = Color.argb(transparent, 56 + rnd.nextInt(170), 56 + rnd.nextInt(170), 56 + rnd.nextInt(170));
-        d.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
-        return color;
+        d.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.LIGHTEN));
     }
 
     public static void animNova(Context context, ImageButton v) {
@@ -101,7 +101,7 @@ public class ClickEffect {
         int ballSize = v.getWidth() / 8;
         int color = getRandomColor(); // get a random color
         AxisPoint p = AxisPoint.getCenter(v);
-        ArrayList<AxisPoint> points = new ArrayList();
+        ArrayList<AxisPoint> points = new ArrayList<>();
         for (int i = 0; i < particles; i++) {
             AxisPoint point = new AxisPoint();
             point.x = (int) (Math.cos(Math.PI * 2 * i / particles) * radious);
@@ -130,7 +130,7 @@ public class ClickEffect {
         int ballSize = v.getWidth() / 6;
         int color = getRandomColor(); // get a random color
         AxisPoint p = AxisPoint.getCenter(v);
-        ArrayList<AxisPoint> points = new ArrayList();
+        ArrayList<AxisPoint> points = new ArrayList<AxisPoint>();
         for (int i = 0; i < particles; i++) {
             AxisPoint point = new AxisPoint();
             point.x = (int) (Math.cos(Math.PI * 2 * i / particles) * radious);
@@ -173,14 +173,14 @@ public class ClickEffect {
         iv.animate().scaleX(3).scaleY(3).setInterpolator(ip).setDuration(500).alpha(0);
     }
 
-    static Handler handle = new Handler();
+    private static Handler handle = new Handler();
 
     public static void animHelixNova(Context context, final ImageButton v, final int particles) {
         final int radious = (int) (v.getWidth() * 3);
         final double angle = Math.PI * 2 / 3; // total spinning angle (rad)
         final int duration = 600;
         int ballSize = v.getWidth() / 6;
-        final ArrayList<ImageView> points = new ArrayList();
+        final ArrayList<ImageView> points = new ArrayList<>();
         for (int i = 0; i < particles; i++) {
             ImageView iv = new ImageView(context);
             ((ViewGroup) v.getParent()).addView(iv); // add View to parent
@@ -238,7 +238,7 @@ public class ClickEffect {
                                 * Math.sin(3 * Math.PI * progress)
                                 * (1 - progress));
                 v.setY(origin - y);
-                Log.d("anim jumping", y + "/" + progress);
+                Timber.d(y + "/" + progress);
                 if (progress < 1)
                     handle.postDelayed(this, 20);
                 else
@@ -265,7 +265,7 @@ public class ClickEffect {
                 v.setY(origin - y);
 //                v.setRotation((float) ((rotateAngle * waveTimes * progress) % rotateAngle - 0.5 * rotateAngle));
                 v.setRotation((float) (45 * Math.sin(progress * Math.PI * 6)));
-                Log.d("anim jumping", y + "/" + progress);
+                Timber.d(y + "/" + progress);
                 if (progress < 1)
                     handle.postDelayed(this, 10);
                 else {

@@ -5,6 +5,7 @@
  
 ## Preview
 + GIFV: https://i.imgur.com/kkQxGB2.gifv
+![GIFV](https://github.com/Wesely/Andrlid-Animation-ClickEffect/blob/master/preview.gif?raw=true)
 
 ## Usage
 Just copy ClickEffect.java into your project, 
